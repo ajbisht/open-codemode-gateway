@@ -1,0 +1,11 @@
+node_modules
+dist
+.git
+.gitignore
+*.log
+tests
+coverage
+.idea
+.vscode
+opencode_mode_architecture.png
+

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/mcp-config.json",
+  "mcpServers": {
+    "demo": {
+      "command": "node",
+      "args": ["demo/demo-server.ts"]
+    }
+  },
+  "executionOptions": {
+    "timeoutMs": 15000,
+    "memoryLimitMb": 128
+  }
+}
+

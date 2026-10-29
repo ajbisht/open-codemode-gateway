@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json.schemastore.org/mcp-config.json",
+  "mcpServers": {
+    "jira": {
+      "command": "docker",
+      "args": ["run", "-i", "--rm", "-e", "JIRA_API_TOKEN", "mcp/jira"],
+      "env": {
+        "JIRA_API_TOKEN": "${JIRA_API_TOKEN}",
+        "JIRA_HOST": "https://company.atlassian.net"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "servicenow": {
+      "command": "python",
+      "args": ["-m", "servicenow_mcp_server"],
+      "env": {
+        "SERVICENOW_INSTANCE": "company.service-now.com",
+        "SERVICENOW_USER": "admin"
+      }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://${DB_USER}:${DB_PASS}@localhost:5432/production"
+      ]
+    },
+    "aws": {
+      "command": "python",
+      "args": ["-m", "mcp_server_aws"],
+      "env": {
+        "AWS_REGION": "us-east-1"
+      }
+    }
+  },
+  "executionOptions": {
+    "timeoutMs": 20000,
+    "memoryLimitMb": 256
+  }
+}
+
